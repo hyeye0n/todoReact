@@ -77,6 +77,7 @@ class App extends React.Component {
             <Todo item={item} key={item.id} delete={this.delete} update={this.update} />
           ))}
         </List>
+          <div> 해야 할 일: {this.state.items.length} 개 </div>
       </Paper>
     );
 
