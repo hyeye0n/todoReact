@@ -92,6 +92,9 @@ add = (item) => {
               <Typography variant="h6">Todo List</Typography>
             </Grid>
             <Grid item>
+              <Clock/>
+            </Grid>
+            <Grid item>
               <Button color="inherit" onClick={signout}>logout</Button>
             </Grid>
           </Grid>
@@ -133,7 +136,6 @@ add = (item) => {
     // 생성된 컴포넌트 JSX를 리턴한다.
     return (
       <div className="App">
-        <Clock/>
         {content}
       </div>
     );
