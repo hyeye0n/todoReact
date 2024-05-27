@@ -5,12 +5,11 @@ import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 class Todo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { item: props.item, readOnly: true};  // 매개변수 item 의 변수/값을 item에 대입
+        this.state = { item: props.item, readOnly: true };  // 매개변수 item 의 변수/값을 item에 대입
         this.delete = props.delete;
         this.update = props.update;
     }
 
-//삭제
     deleteEventHandler = () => {
         this.delete(this.state.item);
     }
@@ -38,16 +37,14 @@ class Todo extends React.Component {
         this.update(this.state.item);
     }
 
-    //add todo 후 반환 
     render() {
         const item = this.state.item;
         return (
             <ListItem>
                 <Checkbox 
-                checked={item.done}
+                checked={item.done} 
                 onChange={this.checkboxEventHandler}
                 />
-
                 <ListItemText>
                     <InputBase
                     inputProps={{"aria-label":"naked", readOnly:this.state.readOnly}}
@@ -59,7 +56,7 @@ class Todo extends React.Component {
                     fullWidth={true}
                     onClick={this.offReadOnlyMode}
                     onChange={this.editEventHandler}
-                    onKeyPress={this.enterKeyEventHandler} 
+                    onKeyPress={this.enterKeyEventHandler}    
                     style={{color: item.done ? 'lightgray': 'inherit'}}                   
                     />
                 </ListItemText>
@@ -67,17 +64,12 @@ class Todo extends React.Component {
                 <ListItemSecondaryAction>
                     <IconButton aria-label="Delete"
                     onClick={this.deleteEventHandler}>
-                        <DeleteOutlined />
-                    </IconButton>                    
+                       <DeleteOutlined />
+                    </IconButton>
                 </ListItemSecondaryAction>
-        
             </ListItem>
-
         );
     }
-
-
-
 }
 
 export default Todo;

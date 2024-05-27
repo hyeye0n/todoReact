@@ -16,12 +16,13 @@ class App extends React.Component {
       loading:true,
     };
   }
-  // add 함수 추가
-  add = (item) => {
-    call("/todo","POST",item).then((response) =>
-      this.setState({items:response.data})
-    );
-  }
+  
+// add 함수 추가 - 매개변수로 item이 넘어오면 넘겨줌 
+add = (item) => {
+  call("/todo","POST",item).then((response) =>
+    this.setState({items:response.data})
+  ); // 백엔드로 보내고 받은 response를 setState에 저장 
+}
 
   delete = (item) => {
     call("/todo","DELETE",item).then((response) =>
@@ -77,7 +78,7 @@ class App extends React.Component {
             <Todo item={item} key={item.id} delete={this.delete} update={this.update} />
           ))}
         </List>
-          <div> 해야 할 일: {this.state.items.length} 개 </div>
+        <div> 해야 할 일: {this.state.items.length} 개 </div>
       </Paper>
     );
 
