@@ -6,6 +6,7 @@ import './App.css';
 import { call, signout } from './service/ApiService';
 import DeleteDoneAll from './DeleteDoneAll';
 import Clear from './Clear';
+import Clock from './Clock';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class App extends React.Component {
       loading:true,
     };
   }
-  
+
 // add 함수 추가 - 매개변수로 item이 넘어오면 넘겨줌 
 add = (item) => {
   call("/todo","POST",item).then((response) =>
@@ -132,6 +133,7 @@ add = (item) => {
     // 생성된 컴포넌트 JSX를 리턴한다.
     return (
       <div className="App">
+        <Clock/>
         {content}
       </div>
     );
