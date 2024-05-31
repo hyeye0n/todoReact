@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
+
+body {
+  font-family: "Hi Melody", sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -44,3 +50,6 @@
   font-size: medium;
 }
 
+.navbar-todo {
+  background-color: blanchedalmond !important;
+}

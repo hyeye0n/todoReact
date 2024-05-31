@@ -9,8 +9,6 @@ import Clock from './Clock';
 import './css/App.css';
 import { blue } from '@material-ui/core/colors';
 import WeatherWidget from './WeatherWidget';
-import Calendar from './MyCalendar';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -82,13 +80,13 @@ class App extends React.Component {
       <nav className="navbar navbar-todo"  role="navigation" aria-label="main navigation">
         <div className="navbar-brand  ">
           <div className="navbar-item ">
-            <h1 className="title "> Todo List</h1>
+            <h1 className="title ">Todo List</h1>
           </div>
           <div className="navbar-item ">
             <Clock/>
           </div>
+          
         </div>
-
         <div className="navbar-end">
           <div className="navbar-item ">
             <div className="buttons">
@@ -102,11 +100,9 @@ class App extends React.Component {
     );
 
     var todoListPage = (
-      
       <div>
         {navigationBar}
-        
-          <div className="container">
+        <div className="container">
           <div className="section">
             <AddTodo add={this.add} />
             <div className="TodoList">{todoItems}</div>
@@ -116,7 +112,8 @@ class App extends React.Component {
             <Clear clearAll={this.clearAll} />
           </div>
         </div>
-
+       
+       
         
       </div>
     );
@@ -130,9 +127,8 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {content} 
-        <div className='calender'> <Calendar/> </div>
-        <div className='weather'>  <WeatherWidget/>  </div>
+        {content}
+        <WeatherWidget/>
       </div>
     );
   }

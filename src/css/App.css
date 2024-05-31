@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
+
+body {
+  font-family: "Hi Melody", sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: navy;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-clock{
+  background-color: gray;
+  display: flex;
+  color: black;
+  font-size: medium;
+}
+
+.navbar-todo {
+  background-color: blanchedalmond !important;
+}
+
+.calender{
+  display: inline-block;
+  padding: 1%;
+  text-align: center;
+  height: auto;
+  overflow: hidden;
+}
+
+.calender .react-calendar__navigation__label {
+  font-weight: bold;
+}
+
+
+/* 달력에 오늘 표시 변경하기  */
+.calender .react-calendar__tile:enabled:hover,
+.calender .react-calendar__tile:enabled:focus {
+  background-color: lightyellow ;
+  color:black
+}
+
+/* 오늘날짜 */
+.calender .react-calendar__tile--now {
+  background: #FFC5D0;
+  font-weight: bold;
+}
+
+/* 날짜 선택 되었을 때 */
+.calender .react-calendar__tile--active{
+  color:black;
+  background-color: #FFFA82;
+
+}
+
+.weather {
+  display: inline-block;
+  padding-bottom: 20px;
+  position: relative;
+  height: auto;
+  overflow: hidden;
+}
+
+
