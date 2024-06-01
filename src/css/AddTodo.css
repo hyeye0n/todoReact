@@ -19,3 +19,23 @@
 .whatToDo ::placeholder {
   font-family: 'Hi Melody', sans-serif;
 }
+
+
+.whatToDo {
+  margin: 16px;
+  padding: 16px;
+}
+
+.whatToDo .MuiGrid-container {
+  align-items: center;
+}
+
+.whatToDo .MuiTextField-root {
+  width: calc(130% - 170px); /* 텍스트 입력 필드를 더 크게 만듦 */
+}
+
+.whatToDo .MuiButton-root {
+  width: 100px; /* 버튼의 너비 설정 */
+  margin-left: 20px; /* 버튼과 텍스트 필드 사이 간격 */
+}
+
