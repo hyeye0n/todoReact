@@ -1,25 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
-.whatToDo {
+.whatToDo, .todoItem, .MuiButton-root {
   font-family: 'Hi Melody', sans-serif;
 }
 
-.whatToDo ::-webkit-input-placeholder {
+.whatToDo input,
+.whatToDo .MuiInputBase-input,
+.todoItem input,
+.todoItem .MuiInputBase-input,
+.MuiButton-root {
   font-family: 'Hi Melody', sans-serif;
 }
 
-.whatToDo :-ms-input-placeholder {
+.whatToDo ::-webkit-input-placeholder,
+.todoItem ::-webkit-input-placeholder {
   font-family: 'Hi Melody', sans-serif;
 }
 
-.whatToDo ::-ms-input-placeholder {
+.whatToDo :-ms-input-placeholder,
+.todoItem :-ms-input-placeholder {
   font-family: 'Hi Melody', sans-serif;
 }
 
-.whatToDo ::placeholder {
+.whatToDo ::-ms-input-placeholder,
+.todoItem ::-ms-input-placeholder {
   font-family: 'Hi Melody', sans-serif;
 }
 
+.whatToDo ::placeholder,
+.todoItem ::placeholder {
+  font-family: 'Hi Melody', sans-serif;
+}
 
 .whatToDo {
   margin: 16px;
@@ -37,5 +48,5 @@
 .whatToDo .MuiButton-root {
   width: 100px; /* 버튼의 너비 설정 */
   margin-left: 20px; /* 버튼과 텍스트 필드 사이 간격 */
+  font-family: 'Hi Melody', sans-serif;
 }
-

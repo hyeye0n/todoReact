@@ -32,7 +32,6 @@ class Todo extends React.Component {
     checkboxEventHandler = (e) => {
         const thisItem = this.state.item;
         thisItem.done = thisItem.done ? false : true; // thisItemdone = !thisitem.done
-        //this.setState({item:thisItem});
         this.setState({readOnly:true});
         this.update(this.state.item);
     }
@@ -40,7 +39,7 @@ class Todo extends React.Component {
     render() {
         const item = this.state.item;
         return (
-            <ListItem>
+            <ListItem className="todoItem">
                 <Checkbox 
                 checked={item.done} 
                 onChange={this.checkboxEventHandler}

@@ -36,7 +36,7 @@ class AddTodo extends React.Component {
                 <Grid container alignItems="center">
                     <Grid item xs>
                         <TextField 
-                            placeholder="오늘 할 일을 적어줘!" 
+                            placeholder="해야할 일을 적어줘!" 
                             fullWidth 
                             onChange={this.onInputChange}
                             value={this.state.item.title}
