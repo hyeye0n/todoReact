@@ -1,6 +1,6 @@
 import React from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
-import "./css/AddTodo.css";
+import "../styles/AddTodo.css";
 
 class AddTodo extends React.Component {
     constructor(props) {

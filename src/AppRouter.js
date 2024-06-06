@@ -1,9 +1,9 @@
 import React from "react";
-import "./css/index.css";
+import "./styles/index.css";
 import App from "./App";
-import Login from "./Login";
-import SignUp from "./SignUp";
-import UserInfo from "./UserInfo";
+import Login from "./service/Login";
+import SignUp from "./service/SignUp";
+import UserInfo from "./service/UserInfo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
