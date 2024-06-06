@@ -1,3 +1,34 @@
+/* Add styles for calendar dots */
+.red-dot {
+  height: 6px; /* 점의 크기를 작게 설정 */
+  width: 6px; /* 점의 크기를 작게 설정 */
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 5px; /* 점을 날짜 아래로 배치 */
+}
+
+.green-dot {
+  height: 6px; /* 점의 크기를 작게 설정 */
+  width: 6px; /* 점의 크기를 작게 설정 */
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 5px; /* 점을 날짜 아래로 배치 */
+}
+
+.react-calendar__tile {
+  position: relative;
+}
+
+.react-calendar__tile .red-dot,
+.react-calendar__tile .green-dot {
+  position: absolute;
+  bottom: 4px; /* 점을 타일의 아래쪽에 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
 
 body {
@@ -6,6 +37,9 @@ body {
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 전체 컨테이너를 중앙 정렬 */
 }
 
 .App-logo {
@@ -43,7 +77,7 @@ body {
   }
 }
 
-.App-clock{
+.App-clock {
   background-color: gray;
   display: flex;
   color: black;
@@ -52,9 +86,19 @@ body {
 
 .navbar-todo {
   background-color: blanchedalmond !important;
+  width: 100%; /* 네비게이션 바를 화면 너비에 맞게 설정 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.calender{
+.navbar-item h1 {
+  margin: 0;
+}
+
+.calender {
   display: inline-block;
   padding: 1%;
   text-align: center;
@@ -66,12 +110,11 @@ body {
   font-weight: bold;
 }
 
-
 /* 달력에 오늘 표시 변경하기  */
 .calender .react-calendar__tile:enabled:hover,
 .calender .react-calendar__tile:enabled:focus {
-  background-color: lightyellow ;
-  color:black
+  background-color: lightyellow;
+  color: black;
 }
 
 /* 오늘날짜 */
@@ -81,10 +124,9 @@ body {
 }
 
 /* 날짜 선택 되었을 때 */
-.calender .react-calendar__tile--active{
-  color:black;
+.calender .react-calendar__tile--active {
+  color: black;
   background-color: #FFFA82;
-
 }
 
 .weather {
@@ -95,4 +137,24 @@ body {
   overflow: hidden;
 }
 
+.calendar-weather-container {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap; /* 화면 크기에 따라 줄바꿈을 적용 */
+}
+
+.calendar-container,
+.weather-widget {
+  margin: 10px; /* 좌우 간격 조정 */
+  flex: 1;
+  min-width: 300px; /* 최소 너비를 설정하여 화면이 좁아졌을 때 줄바꿈 적용 */
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center; /* 버튼들을 가운데 정렬 */
+  margin-top: 20px;
+}
 

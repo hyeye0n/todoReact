@@ -1,6 +1,8 @@
 import { API_BASE_URL } from "../app-config";
 const ACCESS_TOKEN = "ACCESS_TOKEN";
+//import axios from "axios";
 
+//헤더 객체를 생성 -> ACCESS_TOKEN을 가져와 졵해하면 
 export function call(api, method, request) {
     let headers = new Headers({
         "Content-Type": "application/json",
@@ -15,9 +17,11 @@ export function call(api, method, request) {
         url: API_BASE_URL + api,
         method: method,
     };
+
     if(request) {
         options.body = JSON.stringify(request);
     }
+
     return fetch(options.url, options).then((response) =>
         response.json().then((json) => {
             if(!response.ok) {
@@ -59,9 +63,9 @@ export function signup(userDTO) {
         }
     })
     .catch((error) => {
-        console.log("Oops!");
+        console.log("회원 가입 오류!");
         console.log(error.status);
-        console.log("Oops!")  
+        console.log("회원 가입 오류!")  
         if(error.status === 403) {    
             window.location.href = "/auth/signup";
         }
@@ -74,4 +78,41 @@ export function signout() {
     // local 스토리지에 토큰 삭제
     localStorage.setItem("ACCESS_TOKEN", null);
     window.location.href="/"
+}
+
+
+//회원정보 가져오기
+export function getUserInfo() {
+    return call("/auth/userinfo","GET")
+    .then((response)=> {
+        console.log("Response from server", response)
+        return response;
+    })
+    .catch((error) => {
+        console.log("회원정보 가져오기 실패");
+        console.log(error.status);
+        if(error.status === 403) {    
+            window.location.href ="/todo";
+        }
+        return Promise.reject(error);
+    });
+}
+
+
+//회원수정
+export function updateinfo(userDTO){
+    return call("/auth/update", "POST", userDTO)
+    .then((response) => {
+        if(response.id) {
+            window.location.href="/";
+        }
+    })
+    .catch((error) => {
+        console.log("회원정보 수정 오류!");
+        console.log(error.status);
+        if(error.status === 403) {    
+            window.location.href = "/auth/update";
+        }
+        return Promise.reject(error);
+    });
 }

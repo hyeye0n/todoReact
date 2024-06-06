@@ -1,0 +1,17 @@
+.user-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    padding: 1%;
+    
+}
+
+.clock{
+    font-size: 30px;
+}
+
+.update_button{
+    text-align: center;
+    font-size: 50px;
+}

@@ -1,21 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
+.whatToDo, .todoItem, .MuiButton-root {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+.whatToDo input,
+.whatToDo .MuiInputBase-input,
+.todoItem input,
+.todoItem .MuiInputBase-input,
+.MuiButton-root {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+.whatToDo ::-webkit-input-placeholder,
+.todoItem ::-webkit-input-placeholder {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+.whatToDo :-ms-input-placeholder,
+.todoItem :-ms-input-placeholder {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+.whatToDo ::-ms-input-placeholder,
+.todoItem ::-ms-input-placeholder {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+.whatToDo ::placeholder,
+.todoItem ::placeholder {
+  font-family: 'Hi Melody', sans-serif;
+}
+
 .whatToDo {
-  font-family: 'Hi Melody', sans-serif;
+  margin: 16px;
+  padding: 16px;
 }
 
-.whatToDo ::-webkit-input-placeholder {
-  font-family: 'Hi Melody', sans-serif;
+.whatToDo .MuiGrid-container {
+  align-items: center;
 }
 
-.whatToDo :-ms-input-placeholder {
-  font-family: 'Hi Melody', sans-serif;
+.whatToDo .MuiTextField-root {
+  width: calc(130% - 170px); /* 텍스트 입력 필드를 더 크게 만듦 */
 }
 
-.whatToDo ::-ms-input-placeholder {
-  font-family: 'Hi Melody', sans-serif;
-}
-
-.whatToDo ::placeholder {
+.whatToDo .MuiButton-root {
+  width: 100px; /* 버튼의 너비 설정 */
+  margin-left: 20px; /* 버튼과 텍스트 필드 사이 간격 */
   font-family: 'Hi Melody', sans-serif;
 }
