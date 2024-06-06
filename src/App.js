@@ -18,7 +18,8 @@ class App extends React.Component {
       items: [],
       dateItems: [], // 선택한 날짜의 할 일들
       loading: true,
-      selectedDate: new Date() // 선택한 날짜 상태 추가
+      selectedDate: new Date(), // 선택한 날짜 상태 추가
+      username: null //유저 이름
     };
   }
 
@@ -74,6 +75,14 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    call("/auth/userinfo", "GET")
+      .then(response => {
+        this.setState({ username: response.username });
+      })
+      .catch(error => {
+        console.error("Failed to fetch user info:", error);
+      });
+
     call("/todo", "GET", null).then((response) =>
       this.setState({ items: response.data, loading: false }, () => {
         this.fetchDateItems(this.state.selectedDate); // 초기 로딩 시 선택한 날짜의 할 일 목록 가져오기
@@ -108,6 +117,8 @@ class App extends React.Component {
       </div>
     );
 
+    
+
     var navigationBar = (
       <nav className="navbar navbar-todo" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -115,8 +126,8 @@ class App extends React.Component {
             <h1 className="title">Todo List</h1>
           </div>
           <div className="navbar-item"> <Clock /></div>
+          <div className="navbar-item"> 안녕하세요, {this.state.username || "사용자"}님!</div>
         </div>
-        
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
