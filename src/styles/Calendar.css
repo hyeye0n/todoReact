@@ -81,18 +81,22 @@
   color: white;
   border-radius: 50%;
 }
+/*오늘 날짜 색상*/
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background: #65b2ec;
   border-radius: 50%;
 }
+/*현재 날짜 골랐을때 호버색상    */
+
 
 .react-calendar__tile--active {
   background: #00c4a7;
   color: white;
   border-radius: 50%;
 }
+/*다른 날짜 색상*/
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
@@ -103,3 +107,35 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+.red-dot {
+  height: 6px; /* 점의 크기를 작게 설정 */
+  width: 6px; /* 점의 크기를 작게 설정 */
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 5px; /* 점을 날짜 아래로 배치 */
+}
+
+.green-dot {
+  height: 6px; /* 점의 크기를 작게 설정 */
+  width: 6px; /* 점의 크기를 작게 설정 */
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 5px; /* 점을 날짜 아래로 배치 */
+}
+
+.react-calendar__tile {
+  position: relative;
+}
+
+.react-calendar__tile .red-dot,
+.react-calendar__tile .green-dot {
+  position: absolute;
+  bottom: 4px; /* 점을 타일의 아래쪽에 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
