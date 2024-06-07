@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
+.todoItem {
+  font-family: 'Hi Melody', sans-serif;
+}
+
+body.dark-mode .todoItem {
+  background-color: #2e2e2e; /* 다크모드에서 배경 색상 */
+  color: #f8f7f8; /* 다크모드에서 텍스트 색상 */
+}
+
+body.dark-mode .todoItem input {
+  color: #dddddd; /* 다크모드에서 입력 텍스트 색상 */
+}
+
+body.dark-mode .todoItem .MuiCheckbox-root {
+  color: #ffbfbf; /* 다크모드에서 체크박스 색상 */
+}
+
+body.dark-mode .todoItem .MuiIconButton-root {
+  color: #ffbfbf; /* 다크모드에서 아이콘 색상 */
+}
