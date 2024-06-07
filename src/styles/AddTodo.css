@@ -42,7 +42,7 @@
 }
 
 .whatToDo .MuiTextField-root {
-  width: calc(130% - 170px); /* 텍스트 입력 필드를 더 크게 만듦 */
+  width: calc(200% - 100%); /* 텍스트 입력 필드를 더 크게 만듦 */
 }
 
 .whatToDo .MuiButton-root {

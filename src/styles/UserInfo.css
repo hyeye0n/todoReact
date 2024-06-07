@@ -1,0 +1,66 @@
+.UserInfo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 전체 컨테이너를 중앙 정렬 */
+}
+
+.user-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    padding: 1%;
+    
+}
+
+.clock{
+    font-size: 30px;
+}
+
+.update_button{
+    text-align: center;
+    font-size: 50px;
+}
+
+.center{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 전체 컨테이너를 중앙 정렬 */
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.user-info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-info th, .user-info td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.update_button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.update_button .button {
+  margin: 0 auto;
+}
+
+
+.navbar-todo {
+    background-color: blanchedalmond !important;
+    width: 100%; /* 네비게이션 바를 화면 너비에 맞게 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

@@ -1,15 +1,14 @@
 import 'bulma/css/bulma.min.css';
 import React from 'react';
-import Todo from './Todo';
-import AddTodo from './AddTodo';
+import Todo from './components/Todo';
+import AddTodo from './components/AddTodo';
 import { call, signout } from './service/ApiService';
-import DeleteDoneAll from './DeleteDoneAll';
-import Clear from './Clear';
-import Clock from './Clock';
-import './css/App.css';
-import WeatherWidget from './WeatherWidget';
-import MyCalendar from './MyCalendar'; // MyCalendar 컴포넌트 임포트
-import {Link} from 'react-router-dom'
+import DeleteDoneAll from './components/DeleteDoneAll';
+import Clear from './components/Clear';
+import './styles/App.css';
+import WeatherWidget from './components/WeatherWidget';
+import MyCalendar from './components/MyCalendar';
+import NavigationBar from './components/NavigationBar'; // NavigationBar 컴포넌트 임포트
 
 class App extends React.Component {
   constructor(props) {
@@ -54,7 +53,6 @@ class App extends React.Component {
     });
   };
 
-  //전체 삭제 기능
   clearAll = () => {
     const thisItems = this.state.items;
     thisItems.forEach((tdl) => {
@@ -83,6 +81,14 @@ class App extends React.Component {
         console.error("Failed to fetch user info:", error);
       });
 
+    call("/auth/userinfo", "GET")
+      .then(response => {
+        this.setState({ username: response.username });
+      })
+      .catch(error => {
+        console.error("Failed to fetch user info:", error);
+      });
+
     call("/todo", "GET", null).then((response) =>
       this.setState({ items: response.data, loading: false }, () => {
         this.fetchDateItems(this.state.selectedDate); // 초기 로딩 시 선택한 날짜의 할 일 목록 가져오기
@@ -90,7 +96,6 @@ class App extends React.Component {
     );
   }
 
-  // 날짜 선택 핸들러 추가
   onDateChange = (date) => {
     this.setState({ selectedDate: date }, () => {
       this.fetchDateItems(date); // 선택한 날짜의 할 일 목록 가져오기
@@ -104,7 +109,6 @@ class App extends React.Component {
     });
   }
 
-  // 해야하는 리스트의 수 추가 
   render() {
     var todoItems = this.state.dateItems.length > 0 && (
       <div className="box">
@@ -141,13 +145,13 @@ class App extends React.Component {
 
     var todoListPage = (
       <div>
-        {navigationBar}
+        <NavigationBar username={this.state.username} /> {/* NavigationBar 컴포넌트 사용 */}
         <div className="container">
           <div className="section">
             <AddTodo add={this.add} selectedDate={this.state.selectedDate} /> {/* selectedDate 전달 */}
             <div className="TodoList">{todoItems}</div>
           </div>
-          <div className="buttons-container"> {/* 버튼 컨테이너 클래스 추가 */}
+          <div className="buttons-container">
             <DeleteDoneAll clearAllDonelist={this.clearAllDonelist} />
             <Clear clearAll={this.clearAll} />
           </div>
@@ -157,7 +161,7 @@ class App extends React.Component {
             <MyCalendar 
               onDateChange={this.onDateChange} 
               items={this.state.items} // items 전달
-            /> {/* 날짜 변경 핸들러 전달 */}
+            />
           </div>
           <div className="weather-widget">
             <WeatherWidget />

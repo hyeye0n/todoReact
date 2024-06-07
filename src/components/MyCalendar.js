@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import axios from 'axios';
-import './css/Calendar.css';
+import { call } from '../service/ApiService';
+import '../styles/Calendar.css';
 
 const MyCalendar = ({ onDateChange, items }) => {
   const [date, setDate] = useState(new Date());
@@ -15,8 +15,8 @@ const MyCalendar = ({ onDateChange, items }) => {
   const fetchTodos = async (selectedDate) => {
     const formattedDate = selectedDate.toISOString().split('T')[0];
     try {
-      const response = await axios.get(`http://localhost:8080/todo/date/${formattedDate}`);
-      setTodos(response.data.data);
+      const response = await call(`/todo/date/${formattedDate}`, 'GET');
+      setTodos(response.data);
     } catch (error) {
       console.error("Error fetching todos:", error);
     }
@@ -29,7 +29,6 @@ const MyCalendar = ({ onDateChange, items }) => {
 
   const tileContent = ({ date, view }) => {
     if (view === 'month') {
-
       const dateString = date.toISOString().split('T')[0];
       const dayItems = items.filter(item => item.date === dateString);
       if (dayItems.length > 0) {
@@ -46,18 +45,11 @@ const MyCalendar = ({ onDateChange, items }) => {
       <Calendar 
         onChange={handleDateChange} 
         value={date} 
-        formatDay={(locale, date) => date.toLocaleString("en", {day: "numeric"})}
+        formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
         tileContent={tileContent} // tileContent prop 추가
       />
       <div>
-        <h2>Todos for {date.toDateString("en", {day: "numeric"})}</h2>
-        <ul>
-          {todos.map(todo => (
-            <li key={todo.id}>
-              {todo.title}
-            </li>
-          ))}
-        </ul>
+        <h2>Todos for {date.toDateString()}</h2>
       </div>
     </div>
   );

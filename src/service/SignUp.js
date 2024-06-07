@@ -8,7 +8,7 @@ import {
     Typography,
 } from "@material-ui/core";
 
-import { signup } from "./service/ApiService";
+import { signup } from "./ApiService";
 
 class SignUp extends React.Component {
     constructor(props) {
