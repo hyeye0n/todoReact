@@ -1,6 +1,7 @@
 import React from "react";
 import { IconButton } from "@material-ui/core";
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import '../styles/DeleteDoneAll.css'; // DeleteDoneAll.css 파일 임포트
 
 class DeleteDoneAll extends React.Component {
     constructor(props) {
@@ -14,16 +15,20 @@ class DeleteDoneAll extends React.Component {
     }
 
     render() {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+
         return (
-            <div>할 일 완료!
+            <div className={`deleteDoneAll ${isDarkMode ? 'dark-mode' : ''}`}>
+                할 일 완료!
                 <IconButton
                     aria-label="할 일 완료!"
                     onClick={this.deleteEventHandler}
                 >
-                    <CheckCircleOutlineIcon/>
+                    <CheckCircleOutlineIcon />
                 </IconButton>
             </div>
         );
     }
 }
+
 export default DeleteDoneAll;

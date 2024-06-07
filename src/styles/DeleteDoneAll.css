@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
+.deleteDoneAll {
+  font-family: 'Hi Melody', sans-serif;
+  color: inherit;
+}
+
+body.dark-mode .deleteDoneAll {
+  color: #f8f7f8;
+}
+
+body.dark-mode .deleteDoneAll .MuiIconButton-root {
+  color: #ffb6b6 !important;
+}
+
+body.dark-mode .deleteDoneAll .MuiSvgIcon-root {
+  color: #ffb6b6 !important;
+}

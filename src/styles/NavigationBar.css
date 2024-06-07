@@ -1,14 +1,121 @@
+/* NavigationBar.css */
 .navbar-todo {
-    background-color: blanchedalmond !important;
-    width: 100%; /* 네비게이션 바를 화면 너비에 맞게 설정 */
+  background-color: white !important;
+  width: 100%; /* 네비게이션 바를 화면 너비에 맞게 설정 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-todo .navbar-item h1 {
+  margin: 0;
+}
+
+.navbar-todo .button {
+  background: none !important; /* 배경색을 제거 */
+  border: none !important; /* 테두리를 제거 */
+  color: #363636;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  margin: 0.25rem;
+  padding: 0.5rem 1rem; /* 버튼 내부 여백 추가 */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+  display: inline-flex; /* 아이콘과 텍스트를 같은 라인에 배치 */
+  align-items: center; /* 아이콘과 텍스트를 중앙에 정렬 */
+  text-decoration: none; /* 텍스트 장식 제거 */
+  border-radius: 0; /* 초기 상태에서 버튼 모양을 평평하게 설정 */
+  box-shadow: none; /* 버튼 그림자 제거 */
+}
+
+.navbar-todo .button:hover {
+  background-color: #f0f0f0 !important; /* 마우스 오버 시 배경색 변경 */
+  border-radius: 8px; /* 마우스 오버 시 테두리를 둥글게 설정 */
+}
+
+.navbar-todo #button-todo:hover {
+  background-color: #d0e1fd !important;
+  color: #363636 !important; /* 글자색을 변경하지 않도록 설정 */
+  border-radius: 8px; /* 마우스 오버 시 테두리를 둥글게 설정 */
+}
+
+.navbar-todo #button-userinfo:hover {
+  background-color: #fadeb3 !important;
+  color: #363636 !important; /* 글자색을 변경하지 않도록 설정 */
+  border-radius: 8px; /* 마우스 오버 시 테두리를 둥글게 설정 */
+}
+
+.navbar-todo #button-logout:hover {
+  background-color: #fdd6de !important;
+  color: #363636 !important; /* 글자색을 변경하지 않도록 설정 */
+  border-radius: 8px; /* 마우스 오버 시 테두리를 둥글게 설정 */
+}
+
+.navbar-todo .navbar-menu {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.navbar-todo .navbar-brand, .navbar-todo .navbar-end {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .navbar-todo .navbar-item {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-todo .navbar-end .navbar-item {
+    margin-bottom: 0;
+  }
+
+  .navbar-todo .buttons {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 0.5rem;
   }
-  
-  .navbar-item h1 {
-    margin: 0;
+
+  .navbar-todo .buttons .button {
+    margin-bottom: 0.5rem;
+    width: 90%;
+    background-color: none !important;
   }
-  
+
+  .navbar-todo .buttons .button:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* 다크 모드 스타일 */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode .navbar-todo {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-todo .button {
+  color: white;
+}
+
+body.dark-mode .navbar-todo .button:hover {
+  background-color: #333333 !important;
+}
+
+body.dark-mode .navbar-todo #button-todo:hover {
+  background-color: #264653 !important;
+}
+
+body.dark-mode .navbar-todo #button-userinfo:hover {
+  background-color: #2a9d8f !important;
+}
+
+body.dark-mode .navbar-todo #button-logout:hover {
+  background-color: #e76f51 !important;
+}

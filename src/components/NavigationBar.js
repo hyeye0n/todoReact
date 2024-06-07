@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Clock from '../components/Clock';
 import { signout } from '../service/ApiService';
 import '../styles/NavigationBar.css'; // NavigationBar CSS 파일 임포트
 
 const NavigationBar = ({ username }) => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
+
   return (
-    <nav className="navbar navbar-todo" role="navigation" aria-label="main navigation">
+    <nav className="navbar-todo" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <div className="navbar-item">
-          <Link to="/" className="title">Todo List</Link> {/* Link 컴포넌트로 수정 */}
-        </div>
+        <Link to="/" className="navbar-item title">Todo List</Link>
         <div className="navbar-item">
           <Clock />
         </div>
@@ -18,12 +30,16 @@ const NavigationBar = ({ username }) => {
           안녕하세요, {username || "사용자"}님!
         </div>
       </div>
+
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <Link to="/" className="button is-info"> ☑️Todo List</Link>
-            <Link to="/auth/userinfo" className="button is-info">🔒회원정보</Link>
-            <button className="button is-info" onClick={signout}>⭐Logout</button>
+            <Link to="/" id="button-todo" className="button"> ☑️Todo List</Link>
+            <Link to="/auth/userinfo" id="button-userinfo" className="button">🔒회원정보</Link>
+            <button id="button-logout" className="button" onClick={signout}>⭐Logout</button>
+            <button id="button-dark-mode" className="button" onClick={toggleDarkMode}>
+              {darkMode ? '🌙' : '☀️'}
+            </button>
           </div>
         </div>
       </div>

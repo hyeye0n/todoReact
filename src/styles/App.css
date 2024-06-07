@@ -102,3 +102,50 @@ body {
   flex-direction: row; /* 버튼들을 수평으로 정렬 */
   gap: 10px; /* 버튼 간격 조정 */
 }
+
+/* 일반 스타일 */
+.box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 0;
+  width: 100%;
+}
+
+.box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.box ul li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.box ul li:last-child {
+  border-bottom: none;
+}
+
+/* 다크 모드 스타일 */
+
+
+body.dark-mode .TodoList .box {
+  background-color: #1e1e1e;
+  border: 1px solid #92d3f8;
+}
+
+body.dark-mode .TodoList .box ul li {
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .TodoList .box ul li:last-child {
+  border-bottom: none;
+}
+
+body.dark-mode .TodoList .box ul li {
+  color: #e0e0e0;
+}
+
+body.dark-mode .box .todo1 {
+  color: #e0e0e0;
+}

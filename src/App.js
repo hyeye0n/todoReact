@@ -118,7 +118,7 @@ class App extends React.Component {
             <Todo item={item} key={item.id} delete={this.delete} update={this.update} />
           ))}
         </ul>
-        <div> 해야 할 일: {this.state.dateItems.length} 개 </div>
+        <div className='todo1' > 해야 할 일: {this.state.dateItems.length} 개 </div>
       </div>
     );
 
