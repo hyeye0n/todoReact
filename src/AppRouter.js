@@ -7,6 +7,7 @@ import UserInfo from "./service/UserInfo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import UpdatInfo from "./service/UpdateInfo";
 
 function Copyright() {
     return (
@@ -29,6 +30,7 @@ class AppRouter extends React.Component {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/" element={<App />} />
                         <Route path="/auth/userinfo" element={<UserInfo />} />
+                        <Route path="/auth/updateinfo" element={<UpdatInfo />} />
                     </Routes>
                 </div>
                 <div>

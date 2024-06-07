@@ -2,13 +2,14 @@ import 'bulma/css/bulma.min.css';
 import React from 'react';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
-import { call, signout } from './service/ApiService';
+import { call } from './service/ApiService';
 import DeleteDoneAll from './components/DeleteDoneAll';
 import Clear from './components/Clear';
 import './styles/App.css';
 import WeatherWidget from './components/WeatherWidget';
 import MyCalendar from './components/MyCalendar';
 import NavigationBar from './components/NavigationBar'; // NavigationBar 컴포넌트 임포트
+
 
 class App extends React.Component {
   constructor(props) {
@@ -119,28 +120,6 @@ class App extends React.Component {
         </ul>
         <div> 해야 할 일: {this.state.dateItems.length} 개 </div>
       </div>
-    );
-
-    
-
-    var navigationBar = (
-      <nav className="navbar navbar-todo" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <div className="navbar-item">
-            <h1 className="title">Todo List</h1>
-          </div>
-          <div className="navbar-item"> <Clock /></div>
-          <div className="navbar-item"> 안녕하세요, {this.state.username || "사용자"}님!</div>
-        </div>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-            <Link to="/auth/userinfo" className="button is-info" >🔒회원정보</Link>
-              <button className="button is-info" onClick={signout}> ⭐Logout </button>
-            </div>
-          </div>
-        </div>
-      </nav>
     );
 
     var todoListPage = (

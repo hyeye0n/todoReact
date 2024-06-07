@@ -101,17 +101,19 @@ export function getUserInfo() {
 
 //회원수정
 export function updateinfo(userDTO){
-    return call("/auth/update", "POST", userDTO)
+    return call("/auth/updateinfo", "PUT", userDTO)
     .then((response) => {
         if(response.id) {
-            window.location.href="/";
+            window.location.href = "/auth/userinfo";
+        } else {
+            console.log("회원정보 수정 실패: ID가 없습니다.");
         }
     })
     .catch((error) => {
         console.log("회원정보 수정 오류!");
         console.log(error.status);
         if(error.status === 403) {    
-            window.location.href = "/auth/update";
+            window.location.href = "/";
         }
         return Promise.reject(error);
     });

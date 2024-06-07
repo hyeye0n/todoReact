@@ -63,7 +63,7 @@ class Todo extends React.Component {
                 <ListItemSecondaryAction>
                     <IconButton aria-label="Delete"
                     onClick={this.deleteEventHandler}>
-                       <DeleteOutlined />
+                        <DeleteOutlined />
                     </IconButton>
                 </ListItemSecondaryAction>
             </ListItem>

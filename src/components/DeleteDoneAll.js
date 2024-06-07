@@ -1,6 +1,6 @@
 import React from "react";
 import { IconButton } from "@material-ui/core";
-import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 class DeleteDoneAll extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class DeleteDoneAll extends React.Component {
                     aria-label="할 일 완료!"
                     onClick={this.deleteEventHandler}
                 >
-                    <DeleteOutlined />
+                    <CheckCircleOutlineIcon/>
                 </IconButton>
             </div>
         );

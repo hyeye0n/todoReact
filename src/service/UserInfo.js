@@ -49,7 +49,7 @@ function UserInfo() {
                 </table>
             </div>
             <div className="update_button">
-                <Link to="/auth/update" className="button is-info">📝정보수정</Link>
+                <Link to="/auth/updateinfo" className="button is-info">📝정보수정</Link>
             </div>
         </div>
     );

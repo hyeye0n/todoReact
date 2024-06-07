@@ -21,6 +21,7 @@ const NavigationBar = ({ username }) => {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
+            <Link to="/" className="button is-info"> ☑️Todo List</Link>
             <Link to="/auth/userinfo" className="button is-info">🔒회원정보</Link>
             <button className="button is-info" onClick={signout}>⭐Logout</button>
           </div>
