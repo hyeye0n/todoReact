@@ -24,13 +24,12 @@ class UpdateInfo extends React.Component {
                     this.setState({
                         username: response.username,
                         email: response.email,
-                        // password는 기본적으로 빈 문자열로 유지
+                        
                     });
                 }
             })
             .catch((error) => {
                 console.error("사용자 정보를 가져오는 중 오류 발생:", error);
-                this.setState({ error: "사용자 정보를 가져오는 중 오류 발생" });
             });
     }
 
@@ -48,8 +47,7 @@ class UpdateInfo extends React.Component {
                 window.location.href = "/auth/userinfo";
             })
             .catch((error) => {
-                console.error("회원정보 수정 오류:", error); // 오류 로그 추가
-                this.setState({ error: "회원정보 수정 오류!" });
+                console.error("회원정보 수정 오류:", error); 
             });
     }
 
@@ -62,7 +60,7 @@ class UpdateInfo extends React.Component {
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <Typography component="h1" variant="h5">
-                                정보 수정
+                                계정 정보 수정
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
@@ -119,7 +117,7 @@ class UpdateInfo extends React.Component {
                                 fullWidth
                                 variant="contained"
                                 color="primary">
-                                계정 수정 
+                                수정 완료
                             </Button>
                         </Grid>
                     </Grid>

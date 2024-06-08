@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+/* 고양이 이미지 */
+.full_image {
+    width: 90vw;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+/* 버튼 */
+.btn{
+    color: white !important;
+    font-family: 'Jua';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+.login_btn{
+    width: 100px;
+    height: auto;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.signup_btn{
+    width: 100px;
+    height: auto;
+    font-style: normal;
+    background-color: #FFB74D;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}

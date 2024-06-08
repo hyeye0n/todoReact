@@ -9,19 +9,19 @@ function UserInfo() {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        // 컴포넌트가 마운트되었을 때 getUserInfo 함수를 호출하여 사용자 정보를 가져옵니다.
+        // getUserInfo 함수를 호출하여 사용자 정보를 가져오기
         getUserInfo()
             .then(response => {
-                // 성공적으로 사용자 정보를 가져왔을 때 상태를 업데이트합니다.
+                // 성공
                 setUserInfo(response);
             })
             .catch(error => {
-                // 에러가 발생했을 때 에러를 처리할 수 있습니다.
+                // 실패
                 console.error('Error fetching user info:', error);
             });
     }, []);
 
-    // userInfo가 아직 없을 때 로딩 메시지를 보여줍니다.
+    // userInfo가 없을 때 로딩 메시지
     if (!userInfo) {
         return <div>Loading...</div>;
     }

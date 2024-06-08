@@ -1,6 +1,6 @@
 import React from "react";
 import { signin } from "./ApiService";
-import { Button, TextField, Grid, Link, Container, Typography } from "@material-ui/core";
+import {Button, TextField, Grid, Link, Container, Typography } from "@material-ui/core";
 
 class Login extends React.Component {
     constructor(props) {
@@ -19,10 +19,10 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <Container component="main" maxWidth="xs" style={{marginTop: "8%"}}>
-                <Grid container spacing={2}>
+            <Container maxWidth="xs" style={{marginTop: "5%"}}>
+                <Grid container spacing={2} alignItems="center">
                     <Typography component="h1" variant="h5">
-                        로그인
+                    로그인
                     </Typography>
                 </Grid>
                 <form noValidate onSubmit={this.handleSubmit}>

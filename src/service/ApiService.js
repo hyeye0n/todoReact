@@ -49,7 +49,7 @@ export function signin(userDTO) {
             // local 스토리지에 토큰 저장
             localStorage.setItem("ACCESS_TOKEN", response.token);
             // token이 존재하는 경우 todo 화면으로 리디렉트
-            window.location.href="/";
+            window.location.href="/todo";
         }
     });
 }
@@ -118,3 +118,5 @@ export function updateinfo(userDTO){
         return Promise.reject(error);
     });
 }
+
+//메모기능 

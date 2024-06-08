@@ -19,7 +19,8 @@ class App extends React.Component {
       dateItems: [], // 선택한 날짜의 할 일들
       loading: true,
       selectedDate: new Date(), // 선택한 날짜 상태 추가
-      username: null //유저 이름
+      username: null, //유저 이름
+      memo: null //todo list 상단의 메모장 
     };
   }
 
@@ -32,6 +33,8 @@ class App extends React.Component {
       });
     });
   };
+
+
 
   delete = (item) => {
     call("/todo", "DELETE", item).then((response) => {
@@ -73,19 +76,12 @@ class App extends React.Component {
     });
   };
 
+  
   componentDidMount() {
     call("/auth/userinfo", "GET")
       .then(response => {
         this.setState({ username: response.username });
-      })
-      .catch(error => {
-        console.error("Failed to fetch user info:", error);
-      });
-
-    call("/auth/userinfo", "GET")
-      .then(response => {
-        this.setState({ username: response.username });
-      })
+      }) //유저 정보 가져오기 
       .catch(error => {
         console.error("Failed to fetch user info:", error);
       });
@@ -110,6 +106,7 @@ class App extends React.Component {
     });
   }
 
+  // 해야할 일의 개수 출력
   render() {
     var todoItems = this.state.dateItems.length > 0 && (
       <div className="box">

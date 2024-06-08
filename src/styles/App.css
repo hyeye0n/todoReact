@@ -126,6 +126,10 @@ body {
   border-bottom: none;
 }
 
+.todo_memo{
+  margin-bottom: 0;
+}
+
 /* 다크 모드 스타일 */
 
 
