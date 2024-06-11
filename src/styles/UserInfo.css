@@ -1,36 +1,24 @@
+/* 기존 스타일 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .UserInfo {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 전체 컨테이너를 중앙 정렬 */
-}
-
-.user-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    padding: 1%;
-    
-}
-
-.clock{
-    font-size: 30px;
-}
-
-.update_button{
-    text-align: center;
-    font-size: 50px;
-}
-
-.center{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 전체 컨테이너를 중앙 정렬 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 전체 컨테이너를 중앙 정렬 */
+  height: 100%;
 }
 
 .user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding: 1%;
   margin-top: 20px;
 }
 
@@ -45,14 +33,61 @@
   text-align: center;
 }
 
+.clock {
+  font-size: 30px;
+}
+
 .update_button {
-  margin-top: 20px;
   text-align: center;
+  font-size: 50px;
+  margin-top: 20px;
 }
 
 .update_button .button {
   margin: 0 auto;
 }
 
+.center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 전체 컨테이너를 중앙 정렬 */
+}
 
+/* 다크 모드 스타일 */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
 
+.UserInfo.dark-mode,
+.user-info.dark-mode,
+.center.dark-mode,
+.update_button.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.user-info.dark-mode table,
+.user-info.dark-mode th,
+.user-info.dark-mode td,
+.user-info.dark-mode {
+  color: #ffffff; /* 다크 모드에서 테이블 텍스트 색상을 하얀색으로 설정 */
+}
+
+.user-info.dark-mode th,
+.user-info.dark-mode td {
+  border: 1px solid #444;
+}
+
+/* 추가적인 스타일 조정이 필요한 경우 */
+.update_button .button.dark-mode {
+  background-color: #444;
+  color: #ffffff;
+  border-color: #555;
+}
+
+.update_button .button.dark-mode:hover {
+  background-color: #555;
+  border-color: #666;
+}

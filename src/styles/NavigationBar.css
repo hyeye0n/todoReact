@@ -106,16 +106,20 @@ body.dark-mode .navbar-todo .button {
 
 body.dark-mode .navbar-todo .button:hover {
   background-color: #333333 !important;
+  color: white !important; /* 호버 시 글자색을 변경하지 않도록 설정 */
 }
 
 body.dark-mode .navbar-todo #button-todo:hover {
   background-color: #264653 !important;
+  color: white !important; /* 호버 시 글자색을 변경하지 않도록 설정 */
 }
 
 body.dark-mode .navbar-todo #button-userinfo:hover {
   background-color: #2a9d8f !important;
+  color: white !important; /* 호버 시 글자색을 변경하지 않도록 설정 */
 }
 
 body.dark-mode .navbar-todo #button-logout:hover {
   background-color: #e76f51 !important;
+  color: white !important; /* 호버 시 글자색을 변경하지 않도록 설정 */
 }
