@@ -5,8 +5,21 @@ import "../styles/AddTodo.css";
 class AddTodo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { item: { title: "" } };
-        this.add = props.add; // props 의 함수를 this.add 에 연결, props에는 상위 컴포넌트(App.js)의 함수, 매개변수가 들어 있음.
+        this.state = {
+            item: {
+                title: "",
+                date: this.props.selectedDate.toISOString().substring(0, 10) // 캘린더에서 선택한 날짜로 초기화
+            }
+        };
+        this.add = props.add;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.selectedDate !== this.props.selectedDate) {
+            const thisItem = this.state.item;
+            thisItem.date = this.props.selectedDate.toISOString().substring(0, 10);
+            this.setState({ item: thisItem });
+        }
     }
 
     onInputChange = (e) => {
@@ -17,11 +30,16 @@ class AddTodo extends React.Component {
 
     onButtonClick = () => {
         if (this.state.item.title.trim() === "") {
-            alert("할 일을 입력해줘!"); // 경고창 표시
+            alert("할 일을 입력해줘!");
             return;
         }
         this.add(this.state.item);
-        this.setState({ item: { title: "" } }); // text 값을 추가하고 입력 필드는 초기화시킨다.
+        this.setState({
+            item: {
+                title: "",
+                date: this.props.selectedDate.toISOString().substring(0, 10)
+            }
+        });
     }
 
     enterKeyEventHandler = (e) => {
@@ -34,7 +52,7 @@ class AddTodo extends React.Component {
         return (
             <Paper className="whatToDo">
                 <Grid container alignItems="center">
-                    <Grid item xs>
+                    <Grid item xs={10}>
                         <TextField 
                             placeholder="해야할 일을 적어줘!" 
                             fullWidth 
@@ -44,7 +62,7 @@ class AddTodo extends React.Component {
                             className="MuiTextField-root"
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={2}>
                         <Button
                             color="secondary" 
                             variant="outlined"

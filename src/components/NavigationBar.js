@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import Clock from '../components/Clock';
 import { signout } from '../service/ApiService';
 import '../styles/NavigationBar.css'; // NavigationBar CSS 파일 임포트
-import cat from '../images/cat.jpg'
+import cat from '../images/cat_Noback.png';
 
 const NavigationBar = ({ username }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // 로컬 스토리지에서 다크 모드 상태를 불러옴
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(prevMode => !prevMode);
   };
 
   useEffect(() => {
@@ -18,18 +22,19 @@ const NavigationBar = ({ username }) => {
     } else {
       document.body.classList.remove('dark-mode');
     }
+    // 다크 모드 상태를 로컬 스토리지에 저장
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
-// 시계, 사용자 환영 메시지, todo list 페이지 & 회원 정보 페이지 이동 버튼 추가  
   return (
     <nav className="navbar-todo" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-      <Link to="/todo" className="navbar-item title">Todo List</Link>
+        <Link to="/todo" className="navbar-item title">Todo List</Link>
+        <div>
+          <img src={cat} style={{ width: "80px", height: "80px" }} alt="cat" />
+        </div>
         <div className="navbar-item">
           <Clock />
-        </div>
-        <div>
-        <img src={cat} style={{ width: "80px", height: "80px"}} />
         </div>
         <div className="navbar-item">
           안녕하세요, {username || "사용자"}님!

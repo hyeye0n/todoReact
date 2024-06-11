@@ -8,8 +8,7 @@ import Clear from './components/Clear';
 import './styles/App.css';
 import WeatherWidget from './components/WeatherWidget';
 import MyCalendar from './components/MyCalendar';
-import NavigationBar from './components/NavigationBar'; // NavigationBar 컴포넌트 임포트
-
+import NavigationBar from './components/NavigationBar';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,8 +32,6 @@ class App extends React.Component {
       });
     });
   };
-
-
 
   delete = (item) => {
     call("/todo", "DELETE", item).then((response) => {
@@ -76,7 +73,6 @@ class App extends React.Component {
     });
   };
 
-  
   componentDidMount() {
     call("/auth/userinfo", "GET")
       .then(response => {
@@ -106,7 +102,6 @@ class App extends React.Component {
     });
   }
 
-  // 해야할 일의 개수 출력
   render() {
     var todoItems = this.state.dateItems.length > 0 && (
       <div className="box">
@@ -115,7 +110,7 @@ class App extends React.Component {
             <Todo item={item} key={item.id} delete={this.delete} update={this.update} />
           ))}
         </ul>
-        <div className='todo1' > 해야 할 일: {this.state.dateItems.length} 개 </div>
+        <div className='todo1'> 해야 할 일: {this.state.dateItems.length} 개 </div>
       </div>
     );
 

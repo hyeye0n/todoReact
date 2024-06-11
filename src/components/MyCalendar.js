@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { call } from '../service/ApiService';
 import '../styles/Calendar.css';
 
 const MyCalendar = ({ onDateChange, items }) => {
   const [date, setDate] = useState(new Date());
-  const [todos, setTodos] = useState([]);
+  const calendarRef = useRef();
 
   useEffect(() => {
-    fetchTodos(date);
-  }, [date]);
-
-  const fetchTodos = async (selectedDate) => {
-    const formattedDate = selectedDate.toISOString().split('T')[0];
-    try {
-      const response = await call(`/todo/date/${formattedDate}`, 'GET');
-      setTodos(response.data);
-    } catch (error) {
-      console.error("Error fetching todos:", error);
+    // 컴포넌트가 마운트될 때 오늘 날짜를 한 번 클릭
+    if (calendarRef.current) {
+      const todayCell = calendarRef.current.querySelector('.react-calendar__tile--now');
+      if (todayCell) {
+        todayCell.click();
+      }
     }
-  };
+  }, []);
 
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
-    onDateChange(selectedDate); // 선택한 날짜를 부모 컴포넌트로 전달
+    onDateChange(selectedDate); // 선택한 날짜를 상위 컴포넌트로 전달
   };
 
   const tileContent = ({ date, view }) => {
     if (view === 'month') {
-      const dateString = date.toISOString().split('T')[0];
+      const dateString = date.toISOString().substring(0, 10);
       const dayItems = items.filter(item => item.date === dateString);
       if (dayItems.length > 0) {
         const allChecked = dayItems.every(item => item.done);
@@ -41,12 +36,12 @@ const MyCalendar = ({ onDateChange, items }) => {
   };
 
   return (
-    <div>
+    <div ref={calendarRef}>
       <Calendar 
         onChange={handleDateChange} 
         value={date} 
         formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
-        tileContent={tileContent} // tileContent prop 추가
+        tileContent={tileContent}
       />
       <div>
         <h2>Todos for {date.toDateString()}</h2>
