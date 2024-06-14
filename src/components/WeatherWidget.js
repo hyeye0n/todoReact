@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-//날씨 가져오기
-
-const WeatherWidget = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://static1.sharpweather.com/widgetjs/?id=id9a89a81a7f0e9';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
+const WeatherWidget = ({ darkMode }) => {
+  const widgetUrl = darkMode 
+    ? 'https://indify.co/widgets/live/weather/SrM5eArKcXmj3Nvu2Ils' // 다크 모드 URL
+    : 'https://indify.co/widgets/live/weather/l2rMFu7gE8eDgVsDlwvj'; // 라이트 모드 URL 
   return (
-    <div id="id9a89a81a7f0e9" a='{"t":"r","v":"1.2","lang":"ko","locs":[3908],"ssot":"c","sics":"ds","cbkg":"#FFFFFF","cfnt":"#000000","codd":"#FFFFFF","cont":"#000000d4"}'>
-      날씨 데이터 소스:<a href="https://sharpweather.com/weather_bucheon/30_days/">sharpweather.com/weather_bucheon/30_days/</a>
+    <div style={{ width: '100%', height: '500px' }}>
+      <iframe 
+        src={widgetUrl} 
+        style={{ border: 'none', width: '100%', height: '100%' }}
+        title="Weather Widget"
+      ></iframe>
     </div>
   );
 };

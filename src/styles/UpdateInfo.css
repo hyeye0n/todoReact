@@ -1,0 +1,39 @@
+.updateinfo {
+    padding: 20px;
+  }
+  
+  .updateinfo.dark-mode {
+    background-color: #2e2e2e;
+    color: #ffffff;
+  }
+  
+  .updateinfo.dark-mode .title,
+  .updateinfo.dark-mode .input-field label,
+  .updateinfo.dark-mode .error-message,
+  .updateinfo.dark-mode .submit-button {
+    color: #ffffff; /* 글씨를 하얀색으로 변경 */
+  }
+  
+  .updateinfo .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: #ff3860; /* Bulma's danger color */
+    margin-bottom: 20px;
+  }
+  
+  .submit-button {
+    background-color: #00d1b2; /* Bulma's primary color */
+    color: #ffffff;
+  }
+  
+  .submit-button:hover {
+    background-color: #00b89c;
+  }
+  

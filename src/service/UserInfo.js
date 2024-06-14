@@ -5,7 +5,7 @@ import 'bulma/css/bulma.min.css';
 import { Link } from 'react-router-dom';
 import NavigationBar from '../components/NavigationBar'; // NavigationBar 컴포넌트 경로 수정
 
-function UserInfo() {
+function UserInfo({ darkMode, toggleDarkMode }) {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
@@ -27,8 +27,8 @@ function UserInfo() {
     }
 
     return (
-        <div className='UserInfo'>
-            <NavigationBar username={userInfo.username} /> {/* NavigationBar 컴포넌트 사용 */}
+        <div className={`UserInfo ${darkMode ? 'dark-mode' : ''}`}>
+            <NavigationBar username={userInfo.username} darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> {/* NavigationBar 컴포넌트 사용 */}
             <div className='user-info'>
                 <table>
                     <thead>

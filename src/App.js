@@ -1,5 +1,5 @@
 import 'bulma/css/bulma.min.css';
-import React from 'react';
+import React, { Component } from 'react';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
 import { call } from './service/ApiService';
@@ -10,25 +10,26 @@ import WeatherWidget from './components/WeatherWidget';
 import MyCalendar from './components/MyCalendar';
 import NavigationBar from './components/NavigationBar';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
+    const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
     this.state = {
       items: [],
-      dateItems: [], // 선택한 날짜의 할 일들
+      dateItems: [],
       loading: true,
-      selectedDate: new Date(), // 선택한 날짜 상태 추가
-      username: null, //유저 이름
-      memo: null //todo list 상단의 메모장 
+      selectedDate: new Date(),
+      username: null,
+      memo: null,
+      darkMode: savedDarkMode !== null ? savedDarkMode : false
     };
   }
 
   add = (item) => {
-    // 선택한 날짜를 item에 추가
     item.date = this.state.selectedDate.toISOString().split('T')[0];
     call("/todo", "POST", item).then((response) => {
       this.setState({ items: response.data }, () => {
-        this.fetchDateItems(this.state.selectedDate); // 선택한 날짜의 할 일 목록 갱신
+        this.fetchDateItems(this.state.selectedDate);
       });
     });
   };
@@ -36,7 +37,7 @@ class App extends React.Component {
   delete = (item) => {
     call("/todo", "DELETE", item).then((response) => {
       this.setState({ items: response.data }, () => {
-        this.fetchDateItems(this.state.selectedDate); // 선택한 날짜의 할 일 목록 갱신
+        this.fetchDateItems(this.state.selectedDate);
       });
     });
   };
@@ -47,7 +48,7 @@ class App extends React.Component {
       if (tdl.done === true) {
         call("/todo", "DELETE", tdl).then((response) => {
           this.setState({ items: response.data }, () => {
-            this.fetchDateItems(this.state.selectedDate); // 선택한 날짜의 할 일 목록 갱신
+            this.fetchDateItems(this.state.selectedDate);
           });
         });
       }
@@ -59,7 +60,7 @@ class App extends React.Component {
     thisItems.forEach((tdl) => {
       call("/todo", "DELETE", tdl).then((response) => {
         this.setState({ items: response.data }, () => {
-          this.fetchDateItems(this.state.selectedDate); // 선택한 날짜의 할 일 목록 갱신
+          this.fetchDateItems(this.state.selectedDate);
         });
       });
     });
@@ -68,7 +69,7 @@ class App extends React.Component {
   update = (item) => {
     call("/todo", "PUT", item).then((response) => {
       this.setState({ items: response.data }, () => {
-        this.fetchDateItems(this.state.selectedDate); // 선택한 날짜의 할 일 목록 갱신
+        this.fetchDateItems(this.state.selectedDate);
       });
     });
   };
@@ -77,21 +78,28 @@ class App extends React.Component {
     call("/auth/userinfo", "GET")
       .then(response => {
         this.setState({ username: response.username });
-      }) //유저 정보 가져오기 
+      })
       .catch(error => {
         console.error("Failed to fetch user info:", error);
       });
 
     call("/todo", "GET", null).then((response) =>
       this.setState({ items: response.data, loading: false }, () => {
-        this.fetchDateItems(this.state.selectedDate); // 초기 로딩 시 선택한 날짜의 할 일 목록 가져오기
+        this.fetchDateItems(this.state.selectedDate);
       })
     );
+
+    const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (savedDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }
 
   onDateChange = (date) => {
     this.setState({ selectedDate: date }, () => {
-      this.fetchDateItems(date); // 선택한 날짜의 할 일 목록 가져오기
+      this.fetchDateItems(date);
     });
   }
 
@@ -102,24 +110,39 @@ class App extends React.Component {
     });
   }
 
+  toggleDarkMode = () => {
+    this.setState((prevState) => {
+      const newDarkMode = !prevState.darkMode;
+      if (newDarkMode) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+      localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+      return { darkMode: newDarkMode };
+    });
+  }
+
   render() {
-    var todoItems = this.state.dateItems.length > 0 && (
+    const { darkMode, username, selectedDate, items, dateItems, loading } = this.state;
+
+    var todoItems = dateItems.length > 0 && (
       <div className="box">
         <ul>
-          {this.state.dateItems.map((item) => (
+          {dateItems.map((item) => (
             <Todo item={item} key={item.id} delete={this.delete} update={this.update} />
           ))}
         </ul>
-        <div className='todo1'> 해야 할 일: {this.state.dateItems.length} 개 </div>
+        <div className='todo1'> 해야 할 일: {dateItems.length} 개 </div>
       </div>
     );
 
     var todoListPage = (
       <div>
-        <NavigationBar username={this.state.username} /> {/* NavigationBar 컴포넌트 사용 */}
+        <NavigationBar username={username} darkMode={darkMode} toggleDarkMode={this.toggleDarkMode} />
         <div className="container">
           <div className="section">
-            <AddTodo add={this.add} selectedDate={this.state.selectedDate} /> {/* selectedDate 전달 */}
+            <AddTodo add={this.add} selectedDate={selectedDate} />
             <div className="TodoList">{todoItems}</div>
           </div>
           <div className="buttons-container">
@@ -129,13 +152,10 @@ class App extends React.Component {
         </div>
         <div className="calendar-weather-container">
           <div className="calendar-container">
-            <MyCalendar 
-              onDateChange={this.onDateChange} 
-              items={this.state.items} // items 전달
-            />
+            <MyCalendar onDateChange={this.onDateChange} items={items} />
           </div>
           <div className="weather-widget">
-            <WeatherWidget />
+            <WeatherWidget darkMode={darkMode} />
           </div>
         </div>
       </div>
@@ -144,7 +164,7 @@ class App extends React.Component {
     var loadingPage = <h1>Loading...</h1>;
     var content = loadingPage;
 
-    if (!this.state.loading) {
+    if (!loading) {
       content = todoListPage;
     }
 
