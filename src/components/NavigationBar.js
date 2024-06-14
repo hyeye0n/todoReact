@@ -1,29 +1,19 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Clock from '../components/Clock';
+import Clock from './Clock';
 import { signout } from '../service/ApiService';
-import '../styles/NavigationBar.css'; // NavigationBar CSS 파일 임포트
+import '../styles/NavigationBar.css';
 import cat from '../images/cat_Noback.png';
 
-const NavigationBar = ({ username }) => {
-  const [darkMode, setDarkMode] = useState(() => {
-    // 로컬 스토리지에서 다크 모드 상태를 불러옴
-    const savedMode = localStorage.getItem('darkMode');
-    return savedMode ? JSON.parse(savedMode) : false;
-  });
-
-  const toggleDarkMode = () => {
-    setDarkMode(prevMode => !prevMode);
-  };
-
+const NavigationBar = ({ username, darkMode, toggleDarkMode }) => {
   useEffect(() => {
-    if (darkMode) {
+    const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (savedDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
-    // 다크 모드 상태를 로컬 스토리지에 저장
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (
