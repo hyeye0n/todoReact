@@ -36,21 +36,27 @@ class Todo extends React.Component {
 
     checkboxEventHandler = (e) => {
         const thisItem = this.state.item;
-        thisItem.done = thisItem.done ? false : true; // thisItem.done = !thisItem.done
-        this.setState({ readOnly: true });
-        this.update(this.state.item);
+        thisItem.done = !thisItem.done;
+        this.setState({ item: thisItem }, () => {
+            this.update(this.state.item);
+        });
     }
 
     render() {
         const item = this.state.item;
         const isDarkMode = document.body.classList.contains('dark-mode');
+        
+        const textDecoration = item.done ? 'line-through' : 'none';
+        const textColor = item.done 
+            ? 'lightgray' 
+            : (isDarkMode ? '#ffbfbf' : '#f55555');
 
         return (
             <ListItem className={`todoItem ${isDarkMode ? 'dark-mode' : ''}`}>
                 <Checkbox
                     checked={item.done}
                     onChange={this.checkboxEventHandler}
-                    style={{ color: isDarkMode ? '#ffbfbf' : 'f55555' }}
+                    style={{ color: isDarkMode ? '#ffbfbf' : '#f55555' }}
                 />
                 <ListItemText>
                     <InputBase
@@ -64,12 +70,15 @@ class Todo extends React.Component {
                         onClick={this.offReadOnlyMode}
                         onChange={this.editEventHandler}
                         onKeyPress={this.enterKeyEventHandler}
-                        style={{ color: item.done ? 'lightgray' : (isDarkMode ? '#ffbfbf' : 'f55555') }}
+                        style={{
+                            color: textColor,
+                            textDecoration: textDecoration
+                        }}
                     />
                 </ListItemText>
 
                 <ListItemSecondaryAction>
-                    <IconButton aria-label="Delete" onClick={this.deleteEventHandler} style={{ color: isDarkMode ? '#ffbfbf' : 'f55555' }}>
+                    <IconButton aria-label="Delete" onClick={this.deleteEventHandler} style={{ color: isDarkMode ? '#ffbfbf' : '#f55555' }}>
                         <DeleteOutlined />
                     </IconButton>
                 </ListItemSecondaryAction>

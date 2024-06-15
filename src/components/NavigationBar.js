@@ -1,20 +1,15 @@
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Clock from './Clock';
 import { signout } from '../service/ApiService';
 import '../styles/NavigationBar.css';
 import cat from '../images/cat_Noback.png';
 
-const NavigationBar = ({ username, darkMode, toggleDarkMode }) => {
-  useEffect(() => {
-    const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
-    if (savedDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
+const NavigationBar = ({ username, isDarkMode, toggleDarkMode }) => {
+  const handleDarkModeToggle = () => {
+    toggleDarkMode();
+    window.location.reload(); // 페이지 새로고침
+  };
 
   return (
     <nav className="navbar-todo" role="navigation" aria-label="main navigation">
@@ -37,8 +32,8 @@ const NavigationBar = ({ username, darkMode, toggleDarkMode }) => {
             <Link to="/todo" id="button-todo" className="button"> ☑️Todo List</Link>
             <Link to="/auth/userinfo" id="button-userinfo" className="button">🔒회원정보</Link>
             <button id="button-logout" className="button" onClick={signout}>⭐Logout</button>
-            <button id="button-dark-mode" className="button" onClick={toggleDarkMode}>
-              {darkMode ? '🌙' : '☀️'}
+            <button id="button-dark-mode" className="button" onClick={handleDarkModeToggle}>
+              {isDarkMode ? '🌙' : '☀️'}
             </button>
           </div>
         </div>

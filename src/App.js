@@ -8,7 +8,6 @@ import Clear from './components/Clear';
 import './styles/App.css';
 import WeatherWidget from './components/WeatherWidget';
 import MyCalendar from './components/MyCalendar';
-import NavigationBar from './components/NavigationBar';
 
 class App extends Component {
   constructor(props) {
@@ -124,7 +123,7 @@ class App extends Component {
   }
 
   render() {
-    const { darkMode, username, selectedDate, items, dateItems, loading } = this.state;
+    const { darkMode, selectedDate, items, dateItems, loading } = this.state;
 
     var todoItems = dateItems.length > 0 && (
       <div className="box">
@@ -139,7 +138,6 @@ class App extends Component {
 
     var todoListPage = (
       <div>
-        <NavigationBar username={username} darkMode={darkMode} toggleDarkMode={this.toggleDarkMode} />
         <div className="container">
           <div className="section">
             <AddTodo add={this.add} selectedDate={selectedDate} />

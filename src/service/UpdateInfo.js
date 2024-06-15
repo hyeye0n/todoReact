@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, Grid, TextField, Typography, Button } from '@material-ui/core';
+import { Container, TextField, Typography, Button } from '@material-ui/core';
 import { call, updateinfo } from './ApiService';
-import NavigationBar from '../components/NavigationBar';
 import '../styles/UpdateInfo.css'; // Custom CSS 파일 임포트
 
 class UpdateInfo extends React.Component {
@@ -56,7 +55,6 @@ class UpdateInfo extends React.Component {
 
         return (
             <div className={`updateinfo ${darkMode ? 'dark-mode' : ''}`}>
-                <NavigationBar username={this.state.username} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
                 <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
                     <form noValidate onSubmit={this.handleSubmit} className="form-container">
                         <Typography component="h1" variant="h5" className="title">

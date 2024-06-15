@@ -1,13 +1,5 @@
 import React from "react";
-import {
-    Button,
-    TextField,
-    Link,
-    Grid,
-    Container,
-    Typography,
-} from "@material-ui/core";
-
+import { Button, TextField, Link, Grid, Container, Typography } from "@material-ui/core";
 import { signup } from "./ApiService";
 
 class SignUp extends React.Component {
@@ -15,6 +7,7 @@ class SignUp extends React.Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -30,8 +23,10 @@ class SignUp extends React.Component {
     }
 
     render() {
+        const { darkMode } = this.props;
+
         return (
-            <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
+            <Container component="main" maxWidth="xs" style={{ marginTop: "8%", backgroundColor: darkMode ? '#333' : '#fff', color: darkMode ? '#fff' : '#000' }}>
                 <form noValidate onSubmit={this.handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
@@ -49,6 +44,12 @@ class SignUp extends React.Component {
                                 id="username"
                                 label="사용자 이름"
                                 autoFocus
+                                InputLabelProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
+                                InputProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -61,6 +62,12 @@ class SignUp extends React.Component {
                                 id="email"
                                 label="이메일 주소"
                                 autoFocus
+                                InputLabelProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
+                                InputProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -73,6 +80,12 @@ class SignUp extends React.Component {
                                 id="password"
                                 label="패스워드"
                                 autoFocus
+                                InputLabelProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
+                                InputProps={{
+                                    style: { color: darkMode ? '#fff' : '#000' }
+                                }}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -80,14 +93,15 @@ class SignUp extends React.Component {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="primary">
-                                    계정 생성
+                                color="primary"
+                            >
+                                계정 생성
                             </Button>
                         </Grid>
                     </Grid>
                     <Grid container justifyContent="flex-end">
                         <Grid item>
-                            <Link href="/login" variant="body2">
+                            <Link href="/login" variant="body2" style={{ color: darkMode ? '#fff' : '#000' }}>
                                 이미 계정이 있습니까? 로그인하세요.
                             </Link>
                         </Grid>
@@ -98,4 +112,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp
+export default SignUp;
