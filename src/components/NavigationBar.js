@@ -11,6 +11,7 @@ const NavigationBar = ({ username, isDarkMode, toggleDarkMode }) => {
     window.location.reload(); // 페이지 새로고침
   };
 
+  // 이미지, 시계, 사용자 환영 메시지 추가 
   return (
     <nav className="navbar-todo" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -25,7 +26,7 @@ const NavigationBar = ({ username, isDarkMode, toggleDarkMode }) => {
           안녕하세요, {username || "사용자"}님!
         </div>
       </div>
-
+{/* todo list, 회원정보, 다크모드 버튼 추가 */}
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">

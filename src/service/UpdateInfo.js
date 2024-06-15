@@ -32,15 +32,18 @@ class UpdateInfo extends React.Component {
             });
     }
 
+//컴포넌트 업데이트 
     handleChange(event) {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
 
+    // 폼 제출(submit) 시 호출되는 핸들러 함수
     handleSubmit(event) {
         event.preventDefault();
         const { username, email, password } = this.state;
 
+        // updateinfo 함수를 호출하여 사용자 정보를 업데이트하고 결과를 처리
         updateinfo({ email, username, password })
             .then((response) => {
                 window.location.href = "/auth/userinfo";
@@ -50,9 +53,9 @@ class UpdateInfo extends React.Component {
             });
     }
 
+//회원정보 수정 폼 
     render() {
-        const { darkMode, toggleDarkMode } = this.props;
-
+        const { darkMode} = this.props;
         return (
             <div className={`updateinfo ${darkMode ? 'dark-mode' : ''}`}>
                 <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
@@ -71,8 +74,8 @@ class UpdateInfo extends React.Component {
                             autoFocus
                             value={this.state.username}
                             onChange={this.handleChange}
-                            className="input-field"
-                            disabled // 사용자 이름 비활성화
+                            className="input-field" 
+                            margin='normal'
                         />
                         <TextField
                             autoComplete="email"
@@ -85,7 +88,7 @@ class UpdateInfo extends React.Component {
                             value={this.state.email}
                             onChange={this.handleChange}
                             className="input-field"
-                            disabled // 이메일 주소 비활성화
+                            margin='normal'
                         />
                         <TextField
                             autoComplete="current-password"
@@ -99,6 +102,7 @@ class UpdateInfo extends React.Component {
                             value={this.state.password}
                             onChange={this.handleChange}
                             className="input-field"
+                            margin='normal'
                         />
                         {this.state.error && (
                             <Typography color="error" className="error-message">

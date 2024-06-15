@@ -25,13 +25,14 @@ function UserInfo({ darkMode }) {
         return <div>Loading...</div>;
     }
 
+    //계정 정보 수정 
     return (
         <div className={`UserInfo ${darkMode ? 'dark-mode' : ''}`}>
             <div className='user-info'>
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan="2">고객 정보</th>
+                            <th colSpan="2">계정 정보</th>
                         </tr>
                     </thead>
                     <tbody>

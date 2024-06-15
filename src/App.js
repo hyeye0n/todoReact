@@ -24,6 +24,7 @@ class App extends Component {
     };
   }
 
+  //todo list 추가 
   add = (item) => {
     item.date = this.state.selectedDate.toISOString().split('T')[0];
     call("/todo", "POST", item).then((response) => {
@@ -33,6 +34,7 @@ class App extends Component {
     });
   };
 
+  //todo list 삭제 
   delete = (item) => {
     call("/todo", "DELETE", item).then((response) => {
       this.setState({ items: response.data }, () => {
@@ -41,6 +43,7 @@ class App extends Component {
     });
   };
 
+  //완료된 리스트 삭제 
   clearAllDonelist = () => {
     const thisItems = this.state.items;
     thisItems.forEach((tdl) => {
@@ -54,6 +57,7 @@ class App extends Component {
     });
   };
 
+  //리스트 전체 삭제 
   clearAll = () => {
     const thisItems = this.state.items;
     thisItems.forEach((tdl) => {
@@ -65,6 +69,7 @@ class App extends Component {
     });
   };
 
+  //todo list 업데이트 
   update = (item) => {
     call("/todo", "PUT", item).then((response) => {
       this.setState({ items: response.data }, () => {
@@ -73,6 +78,7 @@ class App extends Component {
     });
   };
 
+  //사용자 정보 가져오기 
   componentDidMount() {
     call("/auth/userinfo", "GET")
       .then(response => {
@@ -88,6 +94,7 @@ class App extends Component {
       })
     );
 
+    //다크모드
     const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
     if (savedDarkMode) {
       document.body.classList.add('dark-mode');
@@ -96,19 +103,24 @@ class App extends Component {
     }
   }
 
+// 캘린더에서 날짜가 변경될 때
   onDateChange = (date) => {
     this.setState({ selectedDate: date }, () => {
-      this.fetchDateItems(date);
+      this.fetchDateItems(date); // 선택된 날짜에 해당하는 데이터를 가져옵니다.
     });
   }
 
+  //선택된 날짜에 해당하는 데이터 가져오기
   fetchDateItems = (date) => {
+    // 입력받은 date를 ISO 형식의 문자열로 변환하고, 시간 부분을 제외
     const formattedDate = date.toISOString().split('T')[0];
+     // API 엔드포인트를 호출하여 선택된 날짜에 해당하는 데이터를 가져오기
     call(`/todo/date/${formattedDate}`, "GET", null).then((response) => {
       this.setState({ dateItems: response.data });
     });
   }
 
+//다크모드 선택과 해제
   toggleDarkMode = () => {
     this.setState((prevState) => {
       const newDarkMode = !prevState.darkMode;

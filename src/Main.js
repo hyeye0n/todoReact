@@ -1,5 +1,5 @@
 import React from "react";
-import cat from './cat.jpg';
+import cat from './images/cat.jpg';
 import './styles/Main.css'
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";

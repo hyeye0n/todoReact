@@ -31,9 +31,7 @@ export function call(api, method, request) {
         })
     )
     .catch((error) => {
-        console.log("Oops!");
         console.log(error.status);
-        console.log("Oops!")  
         if(error.status === 403) {  
             window.location.href = "/login";
         }
@@ -63,9 +61,7 @@ export function signup(userDTO) {
         }
     })
     .catch((error) => {
-        console.log("회원 가입 오류!");
         console.log(error.status);
-        console.log("회원 가입 오류!")  
         if(error.status === 403) {    
             window.location.href = "/auth/signup";
         }

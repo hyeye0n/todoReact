@@ -17,11 +17,13 @@ const MyCalendar = ({ onDateChange, items }) => {
     }
   }, []);
 
+  // 날짜 선택이 변경될 때 호출
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
     onDateChange(selectedDate); // 선택한 날짜를 상위 컴포넌트로 전달
   };
 
+    // 달력 타일의 내용을 정의
   const tileContent = ({ date, view }) => {
     if (view === 'month') {
       const dateString = date.toISOString().substring(0, 10);

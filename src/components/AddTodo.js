@@ -17,11 +17,13 @@ class AddTodo extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.selectedDate !== this.props.selectedDate) {
             const thisItem = this.state.item;
+             // 선택된 날짜 업데이트
             thisItem.date = this.props.selectedDate.toISOString().substring(0, 10);
             this.setState({ item: thisItem });
         }
     }
 
+     // 입력 필드 값 변경 시 호출되는 핸들러
     onInputChange = (e) => {
         const thisItem = this.state.item;
         thisItem.title = e.target.value;
@@ -42,6 +44,7 @@ class AddTodo extends React.Component {
         });
     }
 
+    //엔터키 핸들러 
     enterKeyEventHandler = (e) => {
         if (e.key === 'Enter') {
             this.onButtonClick();

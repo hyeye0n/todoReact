@@ -15,7 +15,7 @@ import './styles/index.css';
 function Copyright({ isDarkMode }) {
   return (
     <Typography variant="body2" align="center" className={`copyright ${isDarkMode ? 'dark-mode' : ''}`}>
-      {"Copyright ⓒ "}
+      {"Copyright ⓒ"}
       Catholic University of Korea {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -28,6 +28,7 @@ const InnerAppRouter = ({ isDarkMode, toggleDarkMode, username }) => {
   // 네비게이션 바를 보여줄 경로 설정
   const showNavigationBar = location.pathname === '/todo' || location.pathname === '/auth/userinfo' || location.pathname === '/auth/updateinfo';
 
+  //회원정보, 메인 페이지 경로 업데이트 
   return (
     <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
       {showNavigationBar && <NavigationBar username={username} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
@@ -55,6 +56,7 @@ const AppRouter = () => {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
+    document.title = 'Todo List'; //title 수정 
     // 다크 모드 상태에 따라 body에 dark-mode 클래스 추가 또는 제거
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
