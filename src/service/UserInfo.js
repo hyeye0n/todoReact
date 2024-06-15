@@ -3,9 +3,8 @@ import { getUserInfo } from '../service/ApiService'; // ApiService 파일 경로
 import '../styles/UserInfo.css';
 import 'bulma/css/bulma.min.css';
 import { Link } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar'; // NavigationBar 컴포넌트 경로 수정
 
-function UserInfo({ darkMode, toggleDarkMode }) {
+function UserInfo({ darkMode }) {
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
@@ -28,7 +27,6 @@ function UserInfo({ darkMode, toggleDarkMode }) {
 
     return (
         <div className={`UserInfo ${darkMode ? 'dark-mode' : ''}`}>
-            <NavigationBar username={userInfo.username} darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> {/* NavigationBar 컴포넌트 사용 */}
             <div className='user-info'>
                 <table>
                     <thead>
